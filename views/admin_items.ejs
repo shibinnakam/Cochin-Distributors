@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head><title>Manage Items</title></head>
+<body>
+  <h2>Manage Items</h2>
+  <form action="/dashboard/items/add" method="POST" enctype="multipart/form-data">
+    <input name="name" placeholder="Item Name" required><br>
+    <input name="rate" placeholder="Rate" required><br>
+    <textarea name="description" placeholder="Description"></textarea><br>
+    <input type="file" name="image"><br>
+    <button type="submit">Add Item</button>
+  </form>
+  <hr>
+  <% items.forEach(item => { %>
+    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+      <h3>
+        <%= item.name %> — ₹<%= item.rate %>  
+        <% if (item.active) { %>
+          <span style="color:green">(In Stock)</span>
+        <% } else { %>
+          <span style="color:red">(Not Available)</span>
+        <% } %>
+      </h3>
+      <p><%= item.description %></p>
+      <% if (item.image) { %>
+        <img src="/uploads/<%= item.image %>" width="150">
+      <% } %>
+      <!-- Toggle stock -->
+      <form action="/dashboard/items/<%= item.id %>/toggle" method="POST" style="display:inline">
+        <button type="submit">
+          Turn <%= item.active ? "Off" : "On" %>
+        </button>
+      </form>
+      <!-- Delete -->
+      <form action="/dashboard/items/<%= item.id %>/delete" method="POST" style="display:inline" 
+            onsubmit="return confirm('Delete this item?');">
+        <button type="submit">Delete</button>
+      </form>
+      <!-- Edit Button -->
+      <form action="/dashboard/items/<%= item.id %>/edit" method="GET" style="display:inline">
+        <button type="submit">Edit</button>
+      </form>
+    </div>
+  <% }); %>
+  <br><a href="/dashboard">← Back to Dashboard</a>
+</body>
+</html>

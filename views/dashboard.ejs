@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Admin Dashboard</h2>
+  <form method="POST" action="/update" enctype="multipart/form-data">
+    <input name="title" value="<%= content.title %>"><br>
+    <textarea name="description"><%= content.description %></textarea><br>
+    <input type="file" name="image"><br>
+    <button type="submit">Update</button>
+  </form>
+  <br><a href="/dashboard/items">Manage Items</a>
+  <br><a href="/logout">Logout</a>
+</body>
+</html>

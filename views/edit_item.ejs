@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Item</title></head>
+<body>
+  <h2>Edit Item</h2>
+  <form action="/dashboard/items/<%= item.id %>/update" method="POST" enctype="multipart/form-data">
+    <input name="name" placeholder="Item Name" value="<%= item.name %>" required><br>
+    <input name="rate" placeholder="Rate" value="<%= item.rate %>" required><br>
+    <textarea name="description" placeholder="Description"><%= item.description %></textarea><br>
+    <input type="file" name="image"><br>
+    <button type="submit">Update Item</button>
+  </form>
+  <br><a href="/dashboard/items">Back to Items</a>
+</body>
+</html>

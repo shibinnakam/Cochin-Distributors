@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Home</title></head>
+<body>
+  <h1><%= content.title %></h1>
+  <p><%= content.description %></p>
+  <% if (content.image) { %>
+    <img src="/uploads/<%= content.image %>" width="300">
+  <% } %>
+  <br><a href="/items">View Items</a>
+  <br><a href="/login">Admin Login</a>
+</body>
+</html>
